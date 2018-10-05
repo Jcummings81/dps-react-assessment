@@ -7,14 +7,23 @@ import dpsLogo from '../images/dpsLogo.svg';
 class Home extends Component {
   state = { assignmentMarkdown: '' };
 
+
   componentDidMount() {
+
     axios.get('/api/assignment_details')
       .then(res => {
         this.setState({ assignmentMarkdown: res.data.file })
+        console.log(res)
       })
       .catch( error => {
         console.log(error.response);
     });
+
+    axios.get('/api/all_breweries')
+    .then(res => {
+      console.log(res.data)
+    })
+
   }
 
   render() {
@@ -55,6 +64,8 @@ class Home extends Component {
             </Segment>
           </Grid.Column>
         </Grid>
+    
+
       </Segment>
     );
   }
