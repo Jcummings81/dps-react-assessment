@@ -9,10 +9,9 @@ class RandomBeer extends React.Component {
        count: 0
     }
 
-    namebrew = () => {  axios.get('/api/beer/:name')
+    random = () => {  axios.get('/api/beer')
     .then(res => {
-            const parsedRes = JSON.parse(res)
-            console.log(parsedRes.total_entries)
+            console.log(res.data)
             })
     }
 
@@ -21,7 +20,6 @@ class RandomBeer extends React.Component {
 
         return (
             <div>
-                console.log({this.state.total_entries})
             <Button onClick={this.random} > Leave it to Dionysus </Button>
             </div>
         )
