@@ -41,6 +41,7 @@ class Beer extends React.Component {
 
         const status = this.state
         console.log(status)
+        
 
         //const status = this.state
 
