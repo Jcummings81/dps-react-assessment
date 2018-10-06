@@ -19,11 +19,6 @@ class Home extends Component {
         console.log(error.response);
     });
 
-    axios.get('/api/all_breweries')
-    .then(res => {
-      console.log(res.data)
-    })
-
   }
 
   render() {
