@@ -8,7 +8,8 @@ class Hopsin extends React.Component {
 
     namebrew = () => {  axios.get('/api/beer/:name')
     .then(res => {
-    console.log(res.data)
+     this.setState(res.data)
+     console.log(this.state)
             })
     }
 

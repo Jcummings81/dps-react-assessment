@@ -6,44 +6,81 @@ class Beer extends React.Component {
 
     state = {
 
-        beerpg: 0,
-        beernm: 0,
+        status: {
 
+        page: 0,
+        total_entries: 0,
+        per_page: 0,
+        total_pages: 0,
+        entries: [],
+        }
     }
+
 
 
     beers = () => {  axios.get('/api/all_beers')
         .then(res => {
 
-        const beers = [res.data.total_entries][0]
-        const per_page = [res.data.per_page][0]
-        const page = [res.data.page][0]
-        const pages = [res.data.total_pages][0]
+             this.setState(res.data)
+
+             const status = this.state
+             
+            console.log(status.total_entries)
+            console.log(status.per_page)
+            console.log(status.total_pages)
+            console.log(status.entries)
+
+
+
+
+
+        // const beers = [res.data.total_entries][0]
+        // const per_page = [res.data.per_page][0]
+        // const page = [res.data.page][0]
+        // const pages = [res.data.total_pages][0]
         
-        console.log(res.data)
-        console.log(beers, page, pages, per_page )
+        // console.log(res.data)
+        // console.log(beers, page, pages, per_page )
+
+        // console.log([res.data.entries][0][38].name)
+
+
             })
     }
 
     randpg = () => { axios.get('/api/all_beers')
     .then(res => {
-        const numbeer =  [res.data.total_entries][0]
+        const status = this.state
+        this.setState(res.data)
+                
+
+
+        const numbeer =  status.total_entries
+        console.log( numbeer )
         const  entrynum = Math.floor(Math.random() * (numbeer) +1)
         const tmp = Math.floor(entrynum/50)
         const num = (entrynum%50)
         this.setState({beerpg: tmp, beernm: num})
 
-                console.log(this.state.beerpg)
-                console.log(this.state.beernm)
+                 console.log(this.state.beerpg)
+        /      console.log(this.state.beernm)
     
 
         })
     }
 
 
-    mybeer = () => { axios.get(`/api/all_beers?page=${10}&per_page=${50}`) 
+    mybeer = () => { 
+     const  {beerpg, beernm } = this.state
+        
+    axios.get(`/api/all_beers?page=${beerpg}`) 
     .then(res => {
+
+
+
         console.log(res.data)
+        console.log(this.state.beerpg)
+        console.log(this.state.beernm)
         })
     }
 
