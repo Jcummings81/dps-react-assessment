@@ -1,0 +1,1 @@
+Having an extremely hard time extracting the data in the random function.  Cannot figure out how to retrieve data from a specific page. Can only get a random beer from the first, entries[0] page.  
