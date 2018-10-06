@@ -11,27 +11,25 @@ class Beer extends React.Component {
         per_page: 0,
         total_pages: 0,
         entries: [],
-        ids: [], 
+        beers: [], 
         
         
     }
 
 
 
-    beers = () => {  axios.get('/api/all_beers')
-        .then(res => {
+    pages = () => { 
+        
+        for (let i = 0; i < 10; i++ ) {
+        axios.get(`/api/all_beers?page=${i}`).then(res => { 
+            
+                })
+            }         
+    }
 
-             this.setState(res.data)
-
-             const ids  ={ ids}
-
-        console.log(this.state.entries).array.forEach(element => {
-            this.setState({ ids: [...ids, element.id]})
-        });
-
-
-
-            })
+    beers = () => {
+        for ( let j = 0; j< 50; j++ )
+        return j
     }
 
     randpg = () => { axios.get('/api/all_beers')
@@ -72,7 +70,7 @@ class Beer extends React.Component {
 
         return (
             <div>
-                <Button onClick={this.beers} > Get Beers </Button>
+                <Button onClick={this.pages} > Get Beers </Button>
                 <Button onClick={this.randpg}> Randomize </Button>
 
             </div>
