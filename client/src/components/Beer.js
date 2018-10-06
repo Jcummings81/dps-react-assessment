@@ -2,17 +2,15 @@ import React from 'react'
 import { Button } from 'semantic-ui-react'
 import axios from 'axios'
 
-
 class Beer extends React.Component {
 
     state = {
 
-        beers: 0,
-        per_page: 0,
-        page: 0,
-        pages: 0,
+        beerpg: 0,
+        beernm: 0,
+
     }
-   
+
 
     beers = () => {  axios.get('/api/all_beers')
         .then(res => {
@@ -27,16 +25,25 @@ class Beer extends React.Component {
             })
     }
 
-    randbeer = () => { axios.get('/api/all_beers')
+    randpg = () => { axios.get('/api/all_beers')
     .then(res => {
         const numbeer =  [res.data.total_entries][0]
-        const  beerId = Math.floor(Math.random() * (numbeer) +1)
-        console.log(beerId)
+        const  entrynum = Math.floor(Math.random() * (numbeer) +1)
+        const tmp = Math.floor(entrynum/50)
+        const num = (entrynum%50)
+        this.setState({beerpg: tmp, beernm: num})
 
-        const bingo = [numbeer.entries[beerId].name]
-        console.log(bingo)
+                console.log(this.state.beerpg)
+                console.log(this.state.beernm)
+    
+
+        })
+    }
 
 
+    mybeer = () => { axios.get(`/api/all_beers?page=${10}&per_page=${50}`) 
+    .then(res => {
+        console.log(res.data)
         })
     }
 
@@ -45,7 +52,9 @@ class Beer extends React.Component {
         return (
             <div>
                 <Button onClick={this.beers} > Get Beers </Button>
-                <Button onClick={this.randbeer}> Randomize </Button>
+                <Button onClick={this.randpg}> Randomize </Button>
+                <Button onClick={this.mybeer}> mybeer </Button>
+
             </div>
         )
     }
