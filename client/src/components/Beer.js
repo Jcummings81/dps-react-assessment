@@ -4,17 +4,17 @@ import axios from 'axios'
 
 class Beer extends React.Component {
 
-    // state = {
+    state = {
 
-    //     status: {
-
-    //     page: 0,
-    //     total_entries: 0,
-    //     per_page: 0,
-    //     total_pages: 0,
-    //     entries: [],
-    //     }
-    // }
+        page: 0,
+        total_entries: 0,
+        per_page: 0,
+        total_pages: 0,
+        entries: [],
+        ids: [], 
+        
+        
+    }
 
 
 
@@ -23,12 +23,11 @@ class Beer extends React.Component {
 
              this.setState(res.data)
 
-             const status = this.state
+             const ids  ={ ids}
 
-            console.log(status.total_entries)
-            console.log(status.per_page)
-            console.log(status.total_pages)
-            console.log(status.entries)
+        console.log(this.state.entries).array.forEach(element => {
+            this.setState({ ids: [...ids, element.id]})
+        });
 
 
 
