@@ -6,38 +6,49 @@ class Beer extends React.Component {
 
     state = {
 
+        status: {
         page: 0,
         total_entries: 0,
         per_page: 0,
         total_pages: 0,
         entries: [],
         beers: [], 
-        
+        }
         
     }
+
+    totpages = () => { 
+        axios.get('/api/all_beers')
+            .then( res => {
+                this.setState({ total_pages: res.data.total_pages})
+                return total_pages
+            })
 
 
 
     pages = () => { 
         
-        for (let i = 0; i < 10; i++ ) {
-        axios.get(`/api/all_beers?page=${i}`).then(res => { 
-            
-                })
-            }         
+        for (let i = 0; i < (totpagees()); i++)
+         {
+            axios.get(`/api/all_beers?page=${i}`)
+            .then(res => { 
+                 console.log(res.data)            
+                            })
+                .catch( error => {
+                    console.log(error.response);
+                });
+            }  
+           
     }
 
-    beers = () => {
-        for ( let j = 0; j< 50; j++ )
-        return j
-    }
+   
 
-    randpg = () => { axios.get('/api/all_beers')
-    .then(res => {
-        this.setState(res.data)
+    // randpg = () => { axios.get('/api/all_beers')
+    // .then(res => {
+    //     this.setState(res.data)
 
-        const status = this.state
-        console.log(status)
+    //     const status = this.state
+    //     console.log(status)
         
 
         //const status = this.state
@@ -62,16 +73,16 @@ class Beer extends React.Component {
         //     console.log(status)
 
             
-        })
+        // })
 
-    }
+   // }
 
     render () {
 
         return (
             <div>
                 <Button onClick={this.pages} > Get Beers </Button>
-                <Button onClick={this.randpg}> Randomize </Button>
+                {/* <Button onClick={this.randpg}> Randomize </Button> */}
 
             </div>
         )
