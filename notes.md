@@ -3,3 +3,5 @@ Having an extremely hard time extracting the data in the random function.  Canno
 
 I have a hunch that I need to map over the data first and put beer ID's into an array, as their order in the database is in constant flux, their position is not a reliable identifier.  
 Pretty obvious now, but yeah, I just had an epiphany... lol
+
+Using two for loops in Beer.js I've found out how to cycle through beers to get more than 50.  Still don't have error handling but going with this for now.

@@ -5,13 +5,23 @@ import axios from 'axios'
 class Beer extends React.Component {
 
     state = {
-        beers: []
+        beers: [],
+        total: 0
     }
 
+getTotal = () => {
+    axios.get('api/all_beers')
+        .then( res => {
+            this.setState({total: res.data.total_pages})
+        })
+
+        console.log(this.state.total)
+}
 
 
 getBeers = () => {  
-    for (let j = 0; j < 4 ; j++ )
+    this.getTotal()
+    for (let j = 0; j <  this.state.total ; j++ )
     axios.get(`/api/all_beers?page=${j}`) 
 
     .then(res => {
@@ -31,7 +41,7 @@ getBeers = () => {
         return (
             
             
-        <Button onClick={this.getBeers} > Get Beers </Button>
+        <Button onClick={ this.getBeers} > Get Beers </Button>
                
         )
     }
