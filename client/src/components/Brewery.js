@@ -12,6 +12,14 @@ class Brewery extends React.Component {
 
     }
 
+
+componentDidMount= () => {
+    this.getTotal()
+    this.setState({nextPage: true})
+
+}
+
+
 getTotal = () => {
     axios.get('api/all_breweries')
         .then( res => {
