@@ -7,7 +7,6 @@ class Beer extends React.Component {
 
     state = {
         beers: [],
-        name: '', 
         totpages: 0,
         randpg: 0,
         randent: 0,
@@ -55,8 +54,6 @@ getBeers = () => {
                     this.setState({beers: res.data.entries, pg: (this.state.pg + 1), nextPage: false })
                         for (let i = 0; i < this.state.beers.length; i++ )
                          {
-                        this.setState({name: this.state.beers[i].name})
-                        console.log
                         console.log(this.state.beers[i].id)
                          }
 
@@ -72,7 +69,7 @@ getBeers = () => {
             <div>
 
     <Card.Group itemsPerRow={4} stackable>
-        { beers.map( beer => <Hopsin key={beer.id} {...beers} /> ) }
+        { beers.map( brew => <Hopsin key={brew.id }{...brew} /> ) }
       </Card.Group>
         <Button onClick={this.getBeers}> Get Beers </Button>
         <Button onClick={this.getRand}> What Would Dionysus Do? </Button>

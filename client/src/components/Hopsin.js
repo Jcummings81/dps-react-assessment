@@ -8,7 +8,7 @@ import {
 const Hopsin = ({ name, id, upVote, downVote }) => (
   <Card>
     <Card.Content>
-      <Card.Header>{id}</Card.Header>
+      <Card.Header>{name}</Card.Header>
     </Card.Content>
     { upVote &&
         <Card.Content extra>
