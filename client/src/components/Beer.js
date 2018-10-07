@@ -8,6 +8,7 @@ class Beer extends React.Component {
         beers: [],
         total: 0,
         nextPage: false,
+        pg: 1, 
 
     }
 
@@ -21,33 +22,28 @@ getTotal = () => {
 }
 
 
+
 getBeers = () => {  
-    this.getTotal()
-    for (let j = 0; j <  this.state.total ; j++ )
-    if (this.state.nextPage = true ) 
-    {
-    axios.get(`/api/all_beers?page=${j}`) 
-    .then(res => {
-            this.setState({beers: res.data.entries, nextPage: false})
-            console.log(this.state)
-            for (let i = 0; i < this.state.beers.length; i++ )
-            console.log(this.state.beers[i].name)
-    })
-        } else
+    this.setState({nextPage: true})
 
-        this.getBeers()
+    this.state.nextPage? axios.get(`/api/all_beers?page=${this.state.pg}`)
+                .then( res => {
+                    this.setState({beers: res.data.entries, pg: (this.state.pg + 1), nextPage: false })
+                        for (let i = 0; i < this.state.beers.length; i++ )
+                         {
+                        console.log(this.state.beers[i].id)
+                         }
+
+    }) : null
 }
-
-
-
 
 
     render () {
         return (
-            
+            <div>
             
         <Button onClick={this.getBeers}> Get Beers </Button>
-             
+        </div>
         )
     }
 }
