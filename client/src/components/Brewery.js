@@ -1,6 +1,7 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import axios from 'axios'
+import BrewPlace from './BrewPlace'
 
 class Brewery extends React.Component {
 
@@ -20,7 +21,7 @@ componentDidMount= () => {
 
     axios.get('api/all_breweries')
         .then( res => {
-            this.setState({totpages: res.data.total_pages})
+            this.setState({totpages: res.data.total_pages, breweries: res.data.entries})
         })
 
     this.setRand()
@@ -60,13 +61,19 @@ getBreweries = () => {
 
 
     render () {
-        return (
-            <div>
-            
-        <Button onClick={this.getBreweries}> Get Breweries </Button>
-        <Button onClick={this.getRand}>Chips Fall Where They May</Button>
 
-        </div>
+        const { breweries } = this.state
+
+        return (
+
+        <div>
+            <Card.Group itemsPerRow={4} stackable>
+                { breweries.map( place => <BrewPlace key={place.id }{...place} /> ) }
+             </Card.Group>
+            
+            <Button onClick={this.getBreweries}> Get Breweries </Button>
+             <Button onClick={this.getRand}>Chips Fall Where They May</Button>
+         </div>
         )
     }
 }
