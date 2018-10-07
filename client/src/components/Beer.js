@@ -1,11 +1,13 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import axios from 'axios'
+import Hopsin from './Hopsin'
 
 class Beer extends React.Component {
 
     state = {
         beers: [],
+        name: '', 
         totpages: 0,
         randpg: 0,
         randent: 0,
@@ -20,7 +22,7 @@ componentDidMount= () => {
 
     axios.get('api/all_beers')
         .then( res => {
-            this.setState({totpages: res.data.total_pages})
+            this.setState({totpages: res.data.total_pages, beers: res.data.entries})
         })
     
     this.setRand()
@@ -53,6 +55,8 @@ getBeers = () => {
                     this.setState({beers: res.data.entries, pg: (this.state.pg + 1), nextPage: false })
                         for (let i = 0; i < this.state.beers.length; i++ )
                          {
+                        this.setState({name: this.state.beers[i].name})
+                        console.log
                         console.log(this.state.beers[i].id)
                          }
 
@@ -61,11 +65,18 @@ getBeers = () => {
 
 
     render () {
+
+        const { beers } = this.state
+
         return (
             <div>
-            
+
+    <Card.Group itemsPerRow={4} stackable>
+        { beers.map( beer => <Hopsin key={beer.id} {...beers} /> ) }
+      </Card.Group>
         <Button onClick={this.getBeers}> Get Beers </Button>
         <Button onClick={this.getRand}> What Would Dionysus Do? </Button>
+     
 
         </div>
         )

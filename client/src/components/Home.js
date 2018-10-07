@@ -9,15 +9,6 @@ class Home extends Component {
 
   componentDidMount() {
 
-    axios.get('/api/')
-      .then(res => {
-        this.setState({ assignmentMarkdown: res.data.file })
-        console.log(res)
-      })
-      .catch( error => {
-        console.log(error.response);
-    });
-
   }
 
   render() {
