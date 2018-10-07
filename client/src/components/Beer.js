@@ -6,7 +6,7 @@ class Beer extends React.Component {
 
     state = {
         beers: [],
-        total: 0,
+        totpages: 0,
         randpg: 0,
         randent: 0,
         nextPage: false,
@@ -20,7 +20,7 @@ componentDidMount= () => {
 
     axios.get('api/all_beers')
         .then( res => {
-            this.setState({total: res.data.total_pages})
+            this.setState({totpages: res.data.total_pages})
         })
     
     this.setRand()

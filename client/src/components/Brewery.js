@@ -6,7 +6,9 @@ class Brewery extends React.Component {
 
     state = {
         breweries: [],
-        total: 0,
+        totpages: 0,
+        randpg: 0,
+        randent: 0,
         nextPage: false,
         pg: 1, 
 
@@ -15,15 +17,31 @@ class Brewery extends React.Component {
 
 componentDidMount= () => {
     this.setState({nextPage: true})
-    
+
     axios.get('api/all_breweries')
         .then( res => {
-            this.setState({total: res.data.total_pages})
+            this.setState({totpages: res.data.total_pages})
         })
+
+    this.setRand()
+}
+
+setRand = () => {
+   this.setState({randpg: Math.floor((Math.random() * this.state.total ) + 1), 
+    randent: Math.floor((Math.random() * 50 ) + 1)
+   })
 
 }
 
-
+getRand = () => {
+    axios.get(`api/all_breweries?page=${this.state.randpg}`)
+        .then( res => {
+            this.setState({breweries: res.data.entries})
+            console.log(this.state.breweries[this.state.randent].name)
+            this.setState({randpg: 0, randent: 0 })
+            this.setRand()
+        })
+}
 
 
 getBreweries = () => {  
@@ -46,6 +64,7 @@ getBreweries = () => {
             <div>
             
         <Button onClick={this.getBreweries}> Get Breweries </Button>
+        <Button onClick={this.getRand}>Chips Fall Where They May</Button>
         </div>
         )
     }
