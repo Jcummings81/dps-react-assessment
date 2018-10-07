@@ -65,6 +65,7 @@ getBreweries = () => {
             
         <Button onClick={this.getBreweries}> Get Breweries </Button>
         <Button onClick={this.getRand}>Chips Fall Where They May</Button>
+
         </div>
         )
     }

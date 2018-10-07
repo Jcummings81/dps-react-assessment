@@ -17,7 +17,30 @@ class NavBar extends Component {
           </Link>
           <Menu.Menu position='right'>
             <Link to='/'>
-              <Menu.Item name='DPS React Assessment' />
+              <Menu.Item name='Cyberyne Breweries a Subsidiary of Umbrella Corp' />
+            </Link>
+          </Menu.Menu>
+        </Menu>
+
+
+        <Menu pointing>
+          <Link to='/Beer'>
+            <Menu.Item name='beers' active={this.activeItem('/Beer')} />
+          </Link>
+          <Menu.Menu position='right'>
+            <Link to='/Beer'>
+              <Menu.Item name='See Our Suds' />
+            </Link>
+          </Menu.Menu>
+        </Menu>
+
+        <Menu pointing>
+          <Link to='/Brewery'>
+            <Menu.Item name='breweries' active={this.activeItem('/Brewery')} />
+          </Link>
+          <Menu.Menu position='right'>
+            <Link to='/Brewery'>
+              <Menu.Item name='An Intoxicating Network of Fine Beverages' />
             </Link>
           </Menu.Menu>
         </Menu>

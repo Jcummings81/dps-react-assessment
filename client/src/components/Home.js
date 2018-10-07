@@ -5,12 +5,11 @@ import axios from 'axios';
 import dpsLogo from '../images/dpsLogo.svg';
 
 class Home extends Component {
-  state = { assignmentMarkdown: '' };
 
 
   componentDidMount() {
 
-    axios.get('/api/assignment_details')
+    axios.get('/api/')
       .then(res => {
         this.setState({ assignmentMarkdown: res.data.file })
         console.log(res)
@@ -26,7 +25,7 @@ class Home extends Component {
       <Segment basic>
         <Segment basic textAlign='center'>
           <Image style={styles.centered} size='tiny' src={dpsLogo} alt='DevPoint Studios Logo' />
-          <Header as='h1' style={styles.header}>DevPoint Studios React Assessment</Header>
+          <Header as='h1' style={styles.header}>Beaker Beer Industries </Header>
         </Segment>
         <Grid>
           <Grid.Column computer={8} tablet={8} mobile={16}>
@@ -35,31 +34,36 @@ class Home extends Component {
                 as='h1'
                 textAlign='center'
                 style={styles.header}>
-                  Assessment Details:
+                  In Association With 
               </Header>
               <Divider />
-              <ReactMarkDown source={this.state.assignmentMarkdown} />
             </Segment>
           </Grid.Column>
+
           <Grid.Column computer={8} tablet={8} mobile={16}>
             <Segment inverted>
               <Header
                 as='h1'
                 textAlign='center'
                 style={styles.header}>
-                  Assessment API Endpoints:
+                  The Phantom Fermentation Fraternity
               </Header>
-              <Divider />
-              <iframe
-                style={styles.iframe}
-                title='Assignment README.md'
-                frameBorder={0}
-                src='http://localhost:3001/rails/info/routes'
-              />
+              <Divider /> 
+            </Segment>
+          </Grid.Column>
+    
+        <Grid.Column computer={8} tablet={8} mobile={16}>
+            <Segment inverted>
+              <Header
+                as='h1'
+                textAlign='center'
+                style={styles.header}>
+                  Brings You.... Sum Beeeeer..
+              </Header>
+              <Divider /> 
             </Segment>
           </Grid.Column>
         </Grid>
-    
 
       </Segment>
     );
