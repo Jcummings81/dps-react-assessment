@@ -7,3 +7,5 @@ Pretty obvious now, but yeah, I just had an epiphany... lol
 Using two for loops in Beer.js I've found out how to cycle through beers to get more than 50.  Still don't have error handling but going with this for now.
 
 Finally have the ability to load just the preset paginated 50 beers per click!  Will now transfer the same method to the Breweries page.
+
+Got rid of getTotal method and moved same functionality into component did mount

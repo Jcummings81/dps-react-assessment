@@ -14,20 +14,14 @@ class Beer extends React.Component {
 
 
 componentDidMount= () => {
-        this.getTotal()
-        this.setState({nextPage: true})
+    this.setState({nextPage: true})
 
-    }
-
-getTotal = () => {
-    axios.get('api/all_beers')
+    axios.get('api/all_breweries')
         .then( res => {
             this.setState({total: res.data.total_pages})
         })
 
-        console.log(this.state.total)
-}
-
+    }
 
 
 getBeers = () => {  
