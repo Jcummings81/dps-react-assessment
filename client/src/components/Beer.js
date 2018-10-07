@@ -8,14 +8,22 @@ class Beer extends React.Component {
         beers: []
     }
 
-getBeers = () => {  axios.get('/api/all_beers')
+
+
+getBeers = () => {  
+    for (let j = 0; j < 4 ; j++ )
+    axios.get(`/api/all_beers?page=${j}`) 
 
     .then(res => {
             this.setState({beers: res.data.entries})
             console.log(this.state)
-            console.log(this.state.beers[0])
+            for (let i = 0; i < this.state.beers.length; i++ )
+            console.log(this.state.beers[i].name)
     })
+
 }
+
+
 
 
 
