@@ -24,12 +24,11 @@ componentDidMount= () => {
     }
 
 
-
-
+clea
 
 
 getBeers = () => {  
-
+    this.setState({nextPage: true})
     this.state.nextPage? axios.get(`/api/all_beers?page=${this.state.pg}`)
                 .then( res => {
                     this.setState({beers: res.data.entries, pg: (this.state.pg + 1), nextPage: false })
@@ -48,16 +47,14 @@ getBeers = () => {
 
         return (
             <div>
-
-    <Card.Group itemsPerRow={4} stackable>
-        { beers.map( brew => <Hopsin key={brew.id }{...brew} /> ) }
-      </Card.Group>
-        <Button onClick={this.getBeers}> Get Beers </Button>
-     
-
-        </div>
+            <Button onClick={this.getBeers}>  Get Beers </Button>
+                 <Card.Group itemsPerRow={4} stackable>
+                    { beers.map( brew => <Hopsin key={brew.id }{...brew} /> ) }
+                </Card.Group>
+             
+            </div>
         )
-    }
+    }   
 }
 
 export default Beer

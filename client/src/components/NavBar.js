@@ -29,7 +29,7 @@ class NavBar extends Component {
           </Link>
           <Menu.Menu position='right'>
             <Link to='/Beer'>
-              <Menu.Item name='See Our Suds' />
+              <Menu.Item name='See Our Spectacular Sensational Selection of Suds' />
             </Link>
           </Menu.Menu>
         </Menu>
@@ -41,6 +41,28 @@ class NavBar extends Component {
           <Menu.Menu position='right'>
             <Link to='/Brewery'>
               <Menu.Item name='An Intoxicating Network of Fine Beverages' />
+            </Link>
+          </Menu.Menu>
+        </Menu>
+
+        <Menu pointing>
+          <Link to='/RandomBeer'>
+            <Menu.Item name='RandomBrew' active={this.activeItem('/RandomBeer')} />
+          </Link>
+          <Menu.Menu position='right'>
+            <Link to='/RandomBeer'>
+              <Menu.Item name='Roll The Dice of Drunken Destiny' />
+            </Link>
+          </Menu.Menu>
+        </Menu>
+
+        <Menu pointing>
+          <Link to='/RandomBrewery'>
+            <Menu.Item name='Where do we go Now?' active={this.activeItem('/RandomBrewery')} />
+          </Link>
+          <Menu.Menu position='right'>
+            <Link to='/RandomBrewery'>
+              <Menu.Item name='Take Me to Your Leader' />
             </Link>
           </Menu.Menu>
         </Menu>

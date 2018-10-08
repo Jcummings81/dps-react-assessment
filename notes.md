@@ -21,3 +21,7 @@ Page is not updating when get beers button pressed.. need to link the get beers 
 Trying to figure out the random function.. I know I pretty much had it last night, but cant figure it out. Proud of how far I've come with this though, definitely need to keep going over state, props, mapping, semantic... etc etc.. but again, know I wouldve figured this all out given more time, worked through the entire weekend (minus my sisters baby shower haha), so I can truly say I did my best and call it quits. 
 
 (maybe a bit more time in the morning, we'll see)
+
+Good Morning! Fixed the random beer chooser.  Still need to put error handling in all axios calls, noticed if the beer has no name an error occurs in rand.  Overall its coming together though.  Also need to still fix rendering issue for Beer, Brewery, where only the first 50 cards are rendered.
+
+Fixed Beer/Brew loading issue, somehow I removed setting nextpage to true onclick for getBeers, getBrews... Still have to press it twice though, need to figure that out.

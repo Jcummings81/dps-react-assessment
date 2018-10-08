@@ -7,6 +7,7 @@ import Beer from './Beer'
 import Brewery from './Brewery'
 import Hopsin from './Hopsin'
 import RandomBeer from './RandomBeer'
+import RandomBrewery from './RandomBrewery'
 import { Switch, Route } from 'react-router-dom';
 import { Segment } from 'semantic-ui-react';
 
@@ -19,6 +20,7 @@ class App extends Component {
         <Switch>
         <Route exact path='/Hopsin' component={Hopsin} />
           <Route exact path='/RandomBeer' component={RandomBeer} />
+          <Route exact path='/RandomBrewery' component={RandomBrewery} />
           <Route exact path='/Brewery' component={Brewery} />
           <Route exact path='/Beer' component={ Beer } />
           <Route exact path='/' component={Home} />

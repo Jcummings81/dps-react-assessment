@@ -3,7 +3,7 @@ import { Button, Card } from 'semantic-ui-react';
 import axios from 'axios'
 
 
-class RandomBeer extends React.Component {
+class RandomBrewery extends React.Component {
 
     state = {
        randent: 1, 
@@ -15,7 +15,7 @@ class RandomBeer extends React.Component {
 
 
     componentDidMount= () => {
-        axios.get(`api/all_beers?`)
+        axios.get(`api/all_breweries?`)
         .then( res => {
                     this.setState({randpg: Math.floor((Math.random() * res.data.total_entries ) + 1), 
                     randent: Math.floor((Math.random() * 50 ) + 1 ), ents: res.data.entries}
@@ -27,7 +27,7 @@ class RandomBeer extends React.Component {
      
      getRand = () => {
         const { randpg, ents, randent, name} = this.state
-         axios.get(`api/all_beers?page=${randpg}`)
+         axios.get(`api/all_breweries?page=${randpg}`)
              .then( res => {
                 this.setState({name: ents[randent].name})})
      }
@@ -36,7 +36,7 @@ class RandomBeer extends React.Component {
        
         return (
             <div>
-                 <Button onClick={this.getRand}> What Would Dionysus Do? </Button>
+                 <Button onClick={this.getRand}> Dart to the Map! </Button>
                  <Card>
                     <Card.Content>
                         <Card.Header>{this.state.name}</Card.Header>
@@ -47,4 +47,4 @@ class RandomBeer extends React.Component {
  }
 }
 
-export default RandomBeer
+export default RandomBrewery
