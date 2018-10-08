@@ -16,21 +16,18 @@ class RandomBeer extends React.Component {
     componentDidMount= () => {
         axios.get(`api/all_beers?`)
         .then( res => {
-
-        
-
                     this.setState({randpg: Math.floor((Math.random() * res.data.total_entries ) + 1), 
-                        randent: Math.floor((Math.random() * 50 ) + 1 )})
+                    randent: Math.floor((Math.random() * 50 ) + 1 ), ents: res.data.entries}
+                    )
 
         })            
                 }
 
      
      getRand = () => {
-        const { randent, ents} = this.state
-         axios.get(`api/all_beers?page=${this.state.randpg}`)
+        const { randpg, ents} = this.state
+         axios.get(`api/all_beers?page=${randpg}`)
              .then( res => {
-                this.setState({ents: res.data.entr})
                 console.log(ents)
             })
             }

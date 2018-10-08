@@ -17,3 +17,7 @@ Decided to get rid of option to upvote, downvote a beer/brewery for now.
 Running out of brain juice... So much more I want to do... I would like to display 10 beers/breweries by name on a card on the pages when their button is clicked, and then if that card is clicked go to an indepth information page about that beer, brewery... well see where I get, time's dwindling... (5:12 pm Sunday..)
 
 Page is not updating when get beers button pressed.. need to link the get beers funtion to the card rendering somehow.  Also, still need to paginate.
+
+Trying to figure out the random function.. I know I pretty much had it last night, but cant figure it out. Proud of how far I've come with this though, definitely need to keep going over state, props, mapping, semantic... etc etc.. but again, know I wouldve figured this all out given more time, worked through the entire weekend (minus my sisters baby shower haha), so I can truly say I did my best and call it quits. 
+
+(maybe a bit more time in the morning, we'll see)
