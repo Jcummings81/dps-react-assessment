@@ -9,7 +9,8 @@ class RandomBeer extends React.Component {
        randent: 1, 
        randpg: 1,
        totpages: 0,
-       ents: []
+       ents: [],
+       name: ''
     }
 
 
@@ -25,18 +26,22 @@ class RandomBeer extends React.Component {
 
      
      getRand = () => {
-        const { randpg, ents} = this.state
+        const { randpg, ents, randent, name} = this.state
          axios.get(`api/all_beers?page=${randpg}`)
              .then( res => {
-                console.log(ents)
-            })
-            }
+                this.setState({name: ents[randent].name})})
+     }
 
     render () {
+       
         return (
             <div>
-        
-                     <Button onClick={this.getRand}> What Would Dionysus Do? </Button>
+                 <Button onClick={this.getRand}> What Would Dionysus Do? </Button>
+                 <Card>
+                    <Card.Content>
+                        <Card.Header>{this.state.name}</Card.Header>
+                    </Card.Content>
+                </Card>
             </div>
         )
  }
