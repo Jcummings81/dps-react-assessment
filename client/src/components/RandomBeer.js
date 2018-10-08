@@ -1,29 +1,48 @@
 import React from 'react'
-import { Button } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import axios from 'axios'
 
 
 class RandomBeer extends React.Component {
 
     state = {
-       count: 0
+       randent: 1, 
+       randpg: 1,
+       totpages: 0,
+       ents: []
     }
 
-    random = () => {  axios.get('/api/beer')
-    .then(res => {
-            console.log(res.data)
+
+    componentDidMount= () => {
+        axios.get(`api/all_beers?`)
+        .then( res => {
+
+        
+
+                    this.setState({randpg: Math.floor((Math.random() * res.data.total_entries ) + 1), 
+                        randent: Math.floor((Math.random() * 50 ) + 1 )})
+
+        })            
+                }
+
+     
+     getRand = () => {
+        const { randent, ents} = this.state
+         axios.get(`api/all_beers?page=${this.state.randpg}`)
+             .then( res => {
+                this.setState({ents: res.data.entr})
+                console.log(ents)
             })
-    }
-
+            }
 
     render () {
-
         return (
             <div>
-            <Button onClick={this.random} > Leave it to Dionysus </Button>
+        
+                     <Button onClick={this.getRand}> What Would Dionysus Do? </Button>
             </div>
         )
-    }
+ }
 }
 
 export default RandomBeer

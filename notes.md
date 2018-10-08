@@ -9,3 +9,11 @@ Using two for loops in Beer.js I've found out how to cycle through beers to get 
 Finally have the ability to load just the preset paginated 50 beers per click!  Will now transfer the same method to the Breweries page.
 
 Got rid of getTotal method and moved same functionality into component did mount
+
+Brought in card rendering method from Cat Tinder.
+
+Decided to get rid of option to upvote, downvote a beer/brewery for now.
+
+Running out of brain juice... So much more I want to do... I would like to display 10 beers/breweries by name on a card on the pages when their button is clicked, and then if that card is clicked go to an indepth information page about that beer, brewery... well see where I get, time's dwindling... (5:12 pm Sunday..)
+
+Page is not updating when get beers button pressed.. need to link the get beers funtion to the card rendering somehow.  Also, still need to paginate.

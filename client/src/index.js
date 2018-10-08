@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import 'semantic-ui-css/semantic.min.css';
 import { injectGlobal } from 'styled-components';
+import NinjaScroll from './components/NinjaScroll'
 
 injectGlobal`
   html, body {
@@ -19,7 +20,9 @@ injectGlobal`
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
+    <NinjaScroll>
       <App />
+      </NinjaScroll>
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')
